@@ -7,7 +7,6 @@ include('../wp-blog-header.php');
 $the_query = new WP_Query(
 array(
 'post_type' => 'page', // We only want pages
-'post_parent' => 244, // We only want children of a defined post ID
 'post_count' => -1 // We do not want to limit the post count
 // We can define any additional arguments that we need - see Codex for the full list
 )
@@ -22,7 +21,6 @@ $the_query->the_post();
 
 // Filling in the new array entry
 $return_array[] = array(
-'Id' => get_the_id(), // Set the ID
 'Title' => get_the_title(), // Set the title
 'Content preview with link' => get_permalink().'||'.strip_tags( strip_shortcodes( substr( get_the_content(), 0, 200 ) ) ).'...'
 // Get first 200 chars of the content and replace the shortcodes and tags
